@@ -138,11 +138,3 @@ func _enter_tree():
 
 	fs_tree = Utils.get_fylesystem_tree(self)
 
-
-
-
-
-func _exit_tree():
-	var scene_tree_control:Tree = Utils.get_scene_tree_node(self)
-	scene_tree_control.set_script(null)
-
