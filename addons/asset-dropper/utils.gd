@@ -75,29 +75,12 @@ static func get_scene_tree_node(plugin:EditorPlugin)->Tree:
 	return find_node_by_class_path(scene_tree_dock, ['SceneTreeEditor', 'Tree']) as Tree
 
 
-#CanvasItemEditor, SpatialEditor
-#========== ===================
-static func get_main_editors_parent(base:Panel):
-	return find_node_by_class_path(
-		base, 
-		[
-			'VBoxContainer',
-			'HSplitContainer',
-			'HSplitContainer',
-			'HSplitContainer',
-			'VBoxContainer',
-			'VSplitContainer',
-			'VSplitContainer',
-			'VBoxContainer',
-			'PanelContainer',
-			'VBoxContainer'
-		]
-		
-	)
 
-static func get_canvas_item_editor(base:Panel)->Control:
-	return find_child_by_class(get_main_editors_parent(base), "CanvasItemEditor")
+static func get_canvas_item_editor(plugin:EditorPlugin)->Control:
+	var editor_viewport:VBoxContainer = plugin.get_editor_interface().get_editor_viewport()
+	return find_child_by_class(editor_viewport, "CanvasItemEditor")
 
-static func get_spatial_editor(base:Panel)->Control:
-	return find_child_by_class(get_main_editors_parent(base), "SpatialEditor")
+static func get_spatial_editor(plugin:EditorPlugin)->Control:
+	var editor_viewport:VBoxContainer = plugin.get_editor_interface().get_editor_viewport()
+	return find_child_by_class(editor_viewport, "SpatialEditor")
 

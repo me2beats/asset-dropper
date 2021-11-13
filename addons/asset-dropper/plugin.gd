@@ -20,6 +20,7 @@ var dragging_files: = false
 
 var can_drop: = false
 
+
 func _notification(what):
 	match what:
 		NOTIFICATION_DRAG_BEGIN:
@@ -126,8 +127,8 @@ func _enter_tree():
 	idle_input_timer.one_shot = true
 	add_child(idle_input_timer)
 
-	canvas_item_editor = Utils.get_canvas_item_editor(base)
-	spatial_editor = Utils.get_spatial_editor(base)
+	canvas_item_editor = Utils.get_canvas_item_editor(self)
+	spatial_editor = Utils.get_spatial_editor(self)
 
 
 	scene_tree_control = Utils.get_scene_tree_node(self)
